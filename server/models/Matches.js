@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const MatchSchema = new mongoose.Schema({
     match_id:{
         type: Number,
-        required: true,
+        required: true
     },
     username:{
         type: String,

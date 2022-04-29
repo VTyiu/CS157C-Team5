@@ -46,6 +46,22 @@ app.post("/createMatch", async (req, res) => {
     res.json(match);
 });
 
+app.put("/update", async (req, res) => { // .put is used to update stuff
+    const newMapName = req.body.newMapName;
+    const _id = req.body._id;
+    try {
+        await MatchModel.findById(_id, (error, matchToUpdate) => {
+            matchToUpdate.mapName = newMapName;
+            matchToUpdate.save();
+
+        });
+    } catch(err){
+        console.log(err);
+    }
+
+    res.send("updated");
+}) 
+
 app.listen(3001, () => {
     console.log("SERVER RUNS PERFECTLY!");
 });

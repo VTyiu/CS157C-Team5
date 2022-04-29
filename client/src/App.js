@@ -15,11 +15,19 @@ function App() {
 
   useEffect(() => {
     Axios.get("http://localhost:3001/getMatches").then((response) => {
-      setListOfMatches(response.data)
+      setListOfMatches(response.data);
     }).catch(() => {
       console.log("ERR");
     });
   }, []);
+
+  const updateMatch = (_id) => {
+    const newMapName = prompt("Enter new map name: ");
+
+    Axios.put("http://localhost:3001/update", {
+      newMapName: newMapName, _id: _id
+    });
+  };
 
   const createMatch = () => {
     Axios.post("http://localhost:3001/createMatch", {
@@ -120,7 +128,11 @@ function App() {
                 <h3>Main gun used: {val.gun}</h3>
               </div>
               <div className="matchButtons">
-                <button>Update</button>
+
+                <button onClick={() => {
+                  updateMatch(val._id);
+                }}>Update</button>
+
                 <button>Delete</button>
               </div>
             </div>
