@@ -6,22 +6,10 @@ import validData from "../components/Form/validData";
 import "../components/Form/Form.css";
 
 const Signup = ({ submitForm }) => {
-  // const [name, setName] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
-
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
     validData
   );
-
-  // const createUser = () => {
-  //   Axios.post("http://localhost:3001/createUser", {
-  //     name: values.name.value,
-  //     email: values.email.value,
-  //     password: values.password.value,
-  //   });
-  // };
 
   // useEffect(() => {
   //   Axios.get("http://localhost:3001/getUsers")

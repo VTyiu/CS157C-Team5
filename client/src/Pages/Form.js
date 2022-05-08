@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Login from "./Login";
 import Signup from "./Signup";
 import "../components/Form/Form.css";
-import Home from "./Home";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  let navigate = useNavigate();
 
   function submitForm() {
     setIsSubmitted(true);
@@ -15,7 +15,7 @@ const Form = () => {
     <>
       <div className="form-container">
         <div className="form-content-left"></div>
-        {!isSubmitted ? <Signup submitForm={submitForm} /> : <Home />}
+        {!isSubmitted ? <Signup submitForm={submitForm} /> : navigate("/login")}
       </div>
     </>
   );

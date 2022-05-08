@@ -4,19 +4,19 @@ export const NavMenu = [
     url: "/",
   },
   {
-    title: "Signup",
-    url: "/form",
+    title: "Maps",
+    url: "/maps",
   },
   {
-    title: "Login",
-    url: "/login",
-  },
-  {
-    title: "MatchScreen",
-    url: "/matchscreen",
+    title: "Statistics",
+    url: "/statistics",
   },
   {
     title: "Profile",
     url: "/profile",
+  },
+  {
+    title: "Signup",
+    url: "/form",
   },
 ];

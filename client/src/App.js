@@ -8,6 +8,8 @@ import ErrorPage from "./Pages/ErrorPage";
 import MatchScreen from "./Pages/MatchScreen";
 import Navbar from "./components/Navigationbar/Navbar";
 import Form from "./Pages/Form";
+import Maps from "./Pages/Maps";
+import Statistics from "./Pages/Statistics";
 
 function App() {
   return (
@@ -16,8 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/form" element={<Form />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/matchscreen" element={<MatchScreen />} />
+        <Route path="/maps" element={<Maps />} />
+        <Route path="/statistics" element={<Statistics />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
