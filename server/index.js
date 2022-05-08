@@ -40,13 +40,16 @@ app.post("/loginUser", async (req, res) => {
 
 app.post("/createUser", async (req, res) => {
   try {
-    const user = await UserModel.create({
+    const username = req.body.name;
+    const mail = req.body.email;
+    const pass = req.body.password;
+    const user = new UserModel({
       // user represents data we wanna send to database
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      rank: req.body.rank,
+      name: username,
+      email: mail,
+      password: pass,
     });
+    await user.save();
     res.json(user); // won't be using this data but will send it back so we know that we got back the correct info in backend
   } catch (err) {
     res.json({ status: "error", error: "Duplicate email" });

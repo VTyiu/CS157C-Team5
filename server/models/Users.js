@@ -30,10 +30,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  rank: {
-    type: String,
-    required: true,
-  },
+  // rank: {
+  //   type: String,
+  //   required: true,
+  // },
   //match: [matchSchema],
   //   matches: [
   //     {
