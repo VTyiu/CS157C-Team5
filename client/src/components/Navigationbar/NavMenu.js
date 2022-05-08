@@ -5,7 +5,7 @@ export const NavMenu = [
   },
   {
     title: "Signup",
-    url: "/signup",
+    url: "/form",
   },
   {
     title: "Login",

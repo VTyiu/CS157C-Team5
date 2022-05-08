@@ -1,89 +1,123 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import useForm from "../components/Form/useForm";
+import validData from "../components/Form/validData";
+import "../components/Form/Form.css";
 
-const Signup = () => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [rank, setRank] = useState("");
-  const [listOfUsers, setListOfUsers] = useState([]);
+const Signup = ({ submitForm }) => {
+  // const [name, setName] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
 
-  const createUser = () => {
-    Axios.post("http://localhost:3001/createUser", {
-      name: name,
-      email: email,
-      password: password,
-      rank: rank,
-    }).then(() => {
-      setListOfUsers([...listOfUsers, { name, email, password, rank }]);
-    });
-  };
+  const { handleChange, values, handleSubmit, errors } = useForm(
+    submitForm,
+    validData
+  );
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/getUsers")
-      .then((response) => {
-        setListOfUsers(response.data);
-      })
-      .catch(() => {
-        console.log("ERR");
-      });
-  }, []);
+  // const createUser = () => {
+  //   Axios.post("http://localhost:3001/createUser", {
+  //     name: values.name.value,
+  //     email: values.email.value,
+  //     password: values.password.value,
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/getUsers")
+  //     .then((response) => {
+  //       setListOfUsers(response.data);
+  //     })
+  //     .catch(() => {
+  //       console.log("ERR");
+  //     });
+  // }, []);
 
   return (
-    <div className="App">
-      <div className="userInputs">
-        <form>
+    <div className="form-content-right">
+      <form className="form" onSubmit={handleSubmit}>
+        <h1> Sign Up </h1>
+        <div className="form-inputs">
+          <label htmlFor="username" className="form-label">
+            Username
+          </label>
           <input
-            value={name}
+            id="username"
+            name="username"
             type="text"
+            className="form-input"
             placeholder="Username..."
-            onChange={(event) => setName(event.target.value)}
+            value={values.username}
+            onChange={handleChange}
           />
-          <br />
+          {errors.username && <p>{errors.username}</p>}
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
           <input
-            value={email}
-            type="text"
+            id="email"
+            name="email"
+            type="email"
+            className="form-input"
             placeholder="Email..."
-            onChange={(event) => setEmail(event.target.value)}
+            value={values.email}
+            onChange={handleChange}
           />
-          <br />
+          {errors.email && <p>{errors.email}</p>}
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
-            value={password}
-            type="text"
+            id="password"
+            name="password"
+            type="password"
+            className="form-input"
             placeholder="Password..."
-            onChange={(event) => setPassword(event.target.value)}
+            value={values.password}
+            onChange={handleChange}
           />
-          <br />
+          {errors.password && <p>{errors.password}</p>}
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="password2" className="form-label">
+            Confirm Password
+          </label>
           <input
-            value={rank}
-            type="text"
-            placeholder="Rank..."
-            onChange={(event) => {
-              setRank(event.target.value);
-            }}
+            id="password2"
+            name="password2"
+            type="password2"
+            className="form-input"
+            placeholder="Repeat Password..."
+            value={values.password2}
+            onChange={handleChange}
           />
-          <br />
-          {/* <input type="submit" value ="Create User"/> */}
-          <button onClick={createUser}> Create User </button>
-        </form>
-      </div>
-      <div className="showUsers">
-        {listOfUsers.map((val) => {
-          return (
-            <div className="userContainer">
-              <div className="user">
-                <h3> Name: {val.name}</h3>
-                <h3> Email: {val.email}</h3>
-                <h3> Password: {val.password}</h3>
-                <h3> Rank: {val.rank}</h3>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+          {errors.password2 && <p>{errors.password2}</p>}
+        </div>
+        {/* <button onClick={createUser}> Create User </button> */}
+        <button className="form-input-btn" type="submit">
+          Sign up
+        </button>
+        <span className="form-input-login">
+          Already have an account? login <a href="#"> here </a>
+        </span>
+      </form>
     </div>
   );
 };
 
 export default Signup;
+
+/* Backup code template
+<input
+          value={rank}
+          type="text"
+          placeholder="Rank..."
+          onChange={(event) => {
+            setRank(event.target.value);
+          }}
+        />
+        */

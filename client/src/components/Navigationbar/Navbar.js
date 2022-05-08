@@ -7,7 +7,7 @@ const Navbar = () => {
   const navMenu = NavMenu.map(({ url, title }, index) => {
     return (
       <li key={index}>
-        <NavLink to={url} activeClassName="active">
+        <NavLink to={url} activeclassname="active">
           {title}
         </NavLink>
       </li>

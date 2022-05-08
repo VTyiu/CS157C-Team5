@@ -3,12 +3,13 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
+
+
 .page-home {
-  background-image: url("./components/assets/homebackground.jpg");
+  background-image: url("assets/homebackground.jpeg");
   background-position: center;
   background-size: cover;
   height: 100vh;
