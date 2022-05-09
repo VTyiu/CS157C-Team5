@@ -1,10 +1,25 @@
-import React from "react";
-import { useState } from "react";
+import React, { useRef } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
 
-const Login = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+function Login() {
+  const [loginData, setloginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = loginData;
+
+  const onChange = (e) => {
+    setloginData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   const logUser = () => {
     Axios.post("http://localhost:3001/loginUser", {
@@ -14,28 +29,40 @@ const Login = () => {
   };
 
   return (
-    <div className="userLogin">
-      <h1> Login </h1>
-      <form>
-        <input
-          value={email}
-          type="text"
-          placeholder="Email..."
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <br />
-        <input
-          value={password}
-          type="text"
-          placeholder="Password..."
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <br />
-        {/* <input type="submit" value ="Create User"/> */}
-        <button onClick={logUser}> Login </button>
-      </form>
+    <div className="login-container">
+      <div className="login-content">
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="login-group">
+            <input
+              id="email"
+              value={email}
+              type="text"
+              className="login-inputs"
+              placeholder="Email..."
+              onChange={onChange}
+            />
+          </div>
+          <div className="login-group">
+            <input
+              id="password"
+              name="password"
+              value={password}
+              type="text"
+              className="login-inputs"
+              placeholder="Password..."
+              onChange={onChange}
+            />
+          </div>
+          <div className="login-group">
+            <button type="submit" className="login-btn">
+              {" "}
+              Login{" "}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
-};
+}
 
 export default Login;

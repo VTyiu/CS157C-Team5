@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import useForm from "../components/Form/useForm";
 import validData from "../components/Form/validData";
-import "../components/Form/Form.css";
+import "../components/styles/Form.css";
+import { Link } from "react-router-dom";
 
 const Signup = ({ submitForm }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
@@ -90,7 +91,7 @@ const Signup = ({ submitForm }) => {
           Sign up
         </button>
         <span className="form-input-login">
-          Already have an account? login <a href="#"> here </a>
+          Already have an account? login <Link to="/login"> Login</Link>
         </span>
       </form>
     </div>
@@ -98,14 +99,3 @@ const Signup = ({ submitForm }) => {
 };
 
 export default Signup;
-
-/* Backup code template
-<input
-          value={rank}
-          type="text"
-          placeholder="Rank..."
-          onChange={(event) => {
-            setRank(event.target.value);
-          }}
-        />
-        */
