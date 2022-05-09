@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// const bcrypt = require("bcryptjs");
 
 // use both embedded documents and subset pattern
 // most recent 5 entries will be stored in match in user schema but all other matches will be in
@@ -61,6 +62,35 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+UserSchema.statics.findUser = async function (email, password) {
+  const user = await model.findOne({ email, password });
+  // const user = await model.findOne({ email });
+  // if (!user) {
+  //   return;
+  // }
+
+  // const isMatch = await bcrypt.compare(password, user.password);
+
+  // if (!isMatch) {
+  //   return;
+  // }
+
+  if (user) {
+    return user;
+  } else {
+    return;
+  }
+
+  // return user;
+};
+
+// UserSchema.pre("save", async function (next) {
+//   const user = this;
+//   if (user.isModified("password")) {
+//     user.password = await bcrypt.hash(user.password, 8);
+//   }
+//   next();
+// });
 const model = mongoose.model("users", UserSchema);
 
 module.exports = model;

@@ -1,16 +1,26 @@
-const express = require("express");
-const app = express();
+require("dotenv").config();
+const app = require("./express");
+const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const UserModel = require("./models/Users");
 const MatchModel = require("./models/Matches");
 const cors = require("cors");
 
-app.use(express.json());
-app.use(cors());
+// app.use(express.json());
+// app.use(cors());
 
-mongoose.connect(
-  "mongodb+srv://user1:valstats@cluster0.vn2kb.mongodb.net/valstats?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGOURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("connected to database");
+});
+
+app.listen(PORT, () => {
+  console.log("SERVER RUNS PERFECTLY! on port 5000");
+});
 
 // app.get("/getUsers", (req, res) => {
 //     UserModel.find({}, (err, result) => {
@@ -38,23 +48,23 @@ app.post("/loginUser", async (req, res) => {
   }
 });
 
-app.post("/createUser", async (req, res) => {
-  try {
-    const username = req.body.name;
-    const mail = req.body.email;
-    const pass = req.body.password;
-    const user = new UserModel({
-      // user represents data we wanna send to database
-      name: username,
-      email: mail,
-      password: pass,
-    });
-    await user.save();
-    res.json(user); // won't be using this data but will send it back so we know that we got back the correct info in backend
-  } catch (err) {
-    res.json({ status: "error", error: "Duplicate email" });
-  }
-});
+// app.post("/createUser", async (req, res) => {
+//   try {
+//     const username = req.body.name;
+//     const mail = req.body.email;
+//     const pass = req.body.password;
+//     const user = new UserModel({
+//       // user represents data we wanna send to database
+//       name: username,
+//       email: mail,
+//       password: pass,
+//     });
+//     await user.save();
+//     res.json(user); // won't be using this data but will send it back so we know that we got back the correct info in backend
+//   } catch (err) {
+//     res.json({ status: "error", error: "Duplicate email" });
+//   }
+// });
 
 app.get("/getMatches", (req, res) => {
   MatchModel.find({}, (err, result) => {
@@ -97,8 +107,4 @@ app.put("/update", async (req, res) => {
   }
 
   res.send("updated");
-});
-
-app.listen(3001, () => {
-  console.log("SERVER RUNS PERFECTLY!");
 });
