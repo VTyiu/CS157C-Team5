@@ -22,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/matchscreen" element={<MatchScreen />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import MatchForm from "../components/Form/MatchForm";
 
 const MatchScreen = () => {
   const [match_id, setMatchID] = useState(0);
@@ -46,8 +47,11 @@ const MatchScreen = () => {
     });
   };
 
+
+
   return (
     <div className="App">
+
       <div className="matchInputs">
         <input
           type="number"
@@ -92,34 +96,6 @@ const MatchScreen = () => {
           }}
         />
         <button onClick={createMatch}> Create Match </button>
-      </div>
-
-      <div className="showMatches">
-        {listOfMatches.map((val) => {
-          return (
-            <div className="matchContainer">
-              <div className="match">
-                <h3>Match ID: {val.match_id}</h3>
-                <h3>Username: {val.username}</h3>
-                <h3>User ID: {val.user_id}</h3>
-                <h3>Map name: {val.mapName}</h3>
-                <h3>Agent: {val.agent}</h3>
-                <h3>Main gun used: {val.gun}</h3>
-              </div>
-              <div className="matchButtons">
-                <button
-                  onClick={() => {
-                    updateMatch(val._id);
-                  }}
-                >
-                  Update
-                </button>
-
-                <button>Delete</button>
-              </div>
-            </div>
-          );
-        })}
       </div>
     </div>
   );
