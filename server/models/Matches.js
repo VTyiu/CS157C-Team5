@@ -9,10 +9,6 @@ const MatchSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    user_id:{
-        type: Number,
-        required: true
-    },
     mapName:{
         type: String,
         required: true
@@ -28,6 +24,10 @@ const MatchSchema = new mongoose.Schema({
     createdAt:{
         type: Date,
         default: Date.now
+    },
+    comments:{
+        type: String,
+        required: false
     }
 });
 
