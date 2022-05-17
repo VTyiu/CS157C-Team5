@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import "../components/styles/Map.css";
+import { useNavigate } from "react-router-dom";
 
 const Maps = () => {
   const [listOfMaps, setListOfMaps] = useState([]);
@@ -14,15 +15,16 @@ const Maps = () => {
       .catch(() => {
         console.log("ERR");
       });
-  }, []);
+  }, [listOfMaps]);
 
   return (
-    <div className="showMaps">
+    <div className="maps-container">
       {listOfMaps.map((val) => {
         return (
-          <div className="mapContainer">
-            <h3>Map name: {val.name}</h3>
-            {/* <h3>Url: {val.url}</h3> */}
+          <div className="map-container">
+            <div className="map-title-background">
+              <h3>{val.name}</h3>
+            </div>
             <img src={val.url} alt="new" className="map-url" />
           </div>
         );

@@ -4,13 +4,13 @@
   position: relative;
   background: linear-gradient(
     180deg,
-    rgb(63, 191, 191) 0%,
-    rgb(4, 12, 12) 100%
+  rgb(15, 13, 22) 0%,
+    rgb(7, 7, 8) 100%
   );
 }
 
 .login-container-form {
-  background-color: rgb(4, 12, 12);
+  background-color: rgb(10, 10, 10);
   position: absolute;
   top: 50%;
   left: 50%;

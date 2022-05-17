@@ -11,15 +11,25 @@ const Profile = ({ isAuth, setAuth }) => {
     <div>
       {isAuth ? (
         <div className="profile-container">
-          <h1>Profile Page</h1>
-          <button
-            className="openMatchForm"
-            onClick={() => {
-              setOpenMatchForm(true);
-            }}
-          >
-            Add Match
-          </button>
+          <div className="profile-page-background">
+            <div className="profile-page-container">
+              <h1>Profile Page</h1>
+              <button
+                className="openMatchForm"
+                onClick={() => {
+                  setOpenMatchForm(true);
+                }}
+              >
+                Add Match
+              </button>
+            </div>
+          </div>
+          <div className="profile-matches-background">
+            <div className="profile-matches-container">
+              <h1> Recent Matches </h1>
+            </div>
+            <div className="profile-match-container"></div>
+          </div>
           {openMatchForm && <MatchForm closeMatchForm={setOpenMatchForm} />}
         </div>
       ) : (
