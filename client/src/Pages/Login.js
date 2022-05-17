@@ -1,21 +1,33 @@
 import React from "react";
 import { useState } from "react";
-import Axios from "axios";
 import "../components/styles/Login.css";
+import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ isAuth, setAuth, logUser }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  // const [validLogin, setValidLogin] = useState(false)
 
-  const logUser = () => {
-    Axios.post("http://localhost:3001/loginUser", {
-      email: email,
-      password: password,
-    });
+  const checkLogin = () => {
+    if (email.length == 0 || password.length == 0) {
+      return false;
+    }
+    let auth = logUser(email, password);
+    if (auth) {
+      console.log(auth);
+      setAuth(true);
+    } else {
+      console.log("nope");
+    }
   };
+
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="login-container">
+      {isAuth ? <div>Auth</div> : <div>Not Auth</div>}
       <form className="login-container-form">
         <h1>Login</h1>
         <span className="login-separator">
@@ -24,11 +36,12 @@ const Login = () => {
               Email
             </label>
             <input
-              value={email}
               type="text"
               className="login-input"
               placeholder="Email..."
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
             />
           </div>
           <div className="login-inputs">
@@ -36,17 +49,16 @@ const Login = () => {
               Password
             </label>
             <input
-              value={password}
               type="text"
               className="login-input"
               placeholder="Password..."
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
             />
-            {/* <input type="submit" value ="Create User"/> */}
-            {/* <button onClick={logUser}> Login </button> */}
           </div>
         </span>
-        <button type="submit" className="login-btn">
+        <button onClick={checkLogin} className="login-btn">
           Login
         </button>
       </form>

@@ -1,5 +1,5 @@
 /* */
-nav {
+.nav-container {
   background: black;
   padding: 20px;
   display: flex;
@@ -24,30 +24,50 @@ nav {
   align-items: center;
 }
 
-/* CSS styling for all buttons in navbar*/
-.nav-menu li a {
-  text-decoration: none;
-  color: white;
-  font-weight: 300;
-  padding: 5px 10px;
+/* CSS style of navbar links */
+.nav-menu a {
   margin-left: 20px;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: medium;
+  font-weight: 550;
+  background-color: black;
+  border-radius: 5px;
+  color: rgb(250, 99, 99);
+  cursor: pointer;
 }
 
 /* Changing background of navbar buttons on hover*/
-.nav-menu li a:hover,
-.nav-menu li a.active {
+.nav-menu a:hover {
   background-color: beige;
-  border-radius: 2px;
+  border-radius: 5px;
   color: black;
   transition: all 0.5s ease-in-out;
 }
 
-/* CSS code to edit last item in navMenu
-/* .nav-menu li:last-child a {
-  font-weight: 300;
-  padding: 5px 10px;
-  background-color: red;
-  transition: all 0.5s ease-in-out;
+/* Current link has its color changed */
+.nav-menu a:focus {
+  background-color: beige;
+  color: black;
+}
+
+/* CSS style of logout in navbar */
+.nav-logout {
   margin-left: 20px;
-  border-radius: 2px;
-} */
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: medium;
+  font-weight: 550;
+  background-color: black;
+  border-radius: 5px;
+  color: rgb(250, 99, 99);
+  cursor: pointer;
+}
+
+/* logout hover changes */
+.nav-logout:hover {
+  background-color: rgb(250, 99, 99);
+  border-radius: 5px;
+  color: black;
+  transition: all 0.5s ease-in-out;
+}
