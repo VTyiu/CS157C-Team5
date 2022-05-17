@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const UserModel = require("./models/Users");
 const MatchModel = require("./models/Matches");
+const MapModel = require("./models/Maps");
 const cors = require("cors");
 
 app.use(express.json());
@@ -24,18 +25,21 @@ mongoose.connect(
 
 // req: request - get info from front end, res: response - send info from front end to back end
 app.post("/loginUser", async (req, res) => {
-  const user = await UserModel.findOne({
-    email: req.body.email,
-    password: req.body.password,
-  });
-
-  if (user) {
-    res.send("Logged int");
-    console.log(res.json(user));
-    return res.json({ status: "ok", user: true });
-  } else {
-    return res.json({ status: "error", user: false }); // send error back to front end
-  }
+  const user = await UserModel.findOne(
+    {
+      email: req.body.email,
+      password: req.body.password,
+    },
+    function (err, results) {
+      if (!results) {
+        console.log(results);
+        res.json({ status: 404 }); // Error no matching user;
+      } else {
+        console.log("pass");
+        res.json({ status: 100 }); // Successful login
+      }
+    }
+  );
 });
 
 app.post("/createUser", async (req, res) => {
@@ -58,6 +62,16 @@ app.post("/createUser", async (req, res) => {
 
 app.get("/getMatches", (req, res) => {
   MatchModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+app.get("/getMaps", (req, res) => {
+  MapModel.find({}, (err, result) => {
     if (err) {
       res.json(err);
     } else {
