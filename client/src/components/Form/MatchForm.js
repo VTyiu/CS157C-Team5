@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Axios from "axios";
 import "../styles/Matchscreen.css";
 
@@ -7,19 +7,24 @@ const MatchForm = ({ closeMatchForm }) => {
 
   const [mapName, setMapName] = useState("");
   const [agent, setAgent] = useState("");
-  const [gun, setGun] = useState("");
-  const [kills, setKills] = useState("");
-  const [deaths, setDeaths] = useState("");
+  //const [gun, setGun] = useState("");
+  const [kills, setKills] = useState(0);
+  const [deaths, setDeaths] = useState(0);
 
   const createMatch = () => {
     Axios.post("http://localhost:3001/createMatch", {
       mapName: mapName,
       agent: agent,
-      gun: gun,
+      //gun: gun,
       kills: kills,
       deaths: deaths
     })
   };
+
+  // function setMapDd() {
+  //   var select = document.getElementById('mapdd');
+  //   setMapName(select.value);
+  // }
 
   return (
     <div className="match-form-background">
@@ -32,22 +37,31 @@ const MatchForm = ({ closeMatchForm }) => {
           <div className="match-form-kills">
             <label className="match-form-label">Kills</label>
             <input
-              type="text"
+              type="number"
               className="match-form-input"
               placeholder="Number of kills..."
+              onChange={(event) => {
+                setKills(event.target.value);
+              }}
             />
           </div>
           <div className="match-form-deaths">
             <label className="match-form-label">Deaths</label>
             <input
-              type="text"
+              type="number"
               className="match-form-input"
               placeholder="Number of deaths..."
+              onChange={(event) => {
+                setDeaths(event.target.value);
+              }}
             />
           </div>
           <div className="match-form-maps">
             <label for="mapdd">Maps</label>
-            <select name="Maps" id="mapdd">
+            <select name="Maps" id="mapdd" 
+              onChange={(event) => {
+                setMapName(event.value);
+              }}>
               <option value="select">Select a Map</option>
               <option value="bind">Bind</option>
               <option value="ascent">Ascent</option>
@@ -80,12 +94,15 @@ const MatchForm = ({ closeMatchForm }) => {
               <option value="omen">Omen</option>
               <option value="reyna">Reyna</option>
               <option value="killjoy">Killjoy</option>
+              onChange={(event) => {
+                setAgent(event.options.value);
+              }}
             </select>
           </div>
         </div>
         <div className="match-form-footer">
           <button onClick={() => closeMatchForm(false)}>Cancel</button>
-          <button>Submit</button>
+          <button onClick={createMatch}> Submit </button>
         </div>
       </div>
     </div>
