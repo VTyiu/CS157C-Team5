@@ -5,3 +5,13 @@
   align-items: center;
   flex-direction: column;
 }
+
+.match-form-body {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.match-form-inputs{
+  width: 50%;
+  
+}

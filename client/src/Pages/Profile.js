@@ -5,6 +5,7 @@ import "../components/styles/Profile.css";
 
 const Profile = () => {
   const [openMatchForm, setOpenMatchForm] = useState(false);
+  
   return (
     <div className="profile-container">
       <h1>Profile Page</h1>

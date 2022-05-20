@@ -26,6 +26,22 @@ const MatchForm = ({ closeMatchForm }) => {
               placeholder="Number of deaths..."
             />
           </div>
+          <div className="match-form-inputs">
+            <label className="match-form-label">Map</label>
+            <input
+              type="text"
+              className="match-form-input"
+              placeholder="Name of the map..."
+            />
+          </div>
+          <div className="match-form-inputs">
+            <label className="match-form-label">Gun</label>
+            <input
+              type="text"
+              className="match-form-input"
+              placeholder="Most used gun..."
+            />
+          </div>
         </div>
         <div className="match-form-footer">
           <button onClick={() => closeMatchForm(false)}>Cancel</button>
