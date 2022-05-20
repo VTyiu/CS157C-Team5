@@ -3,27 +3,31 @@ const mongoose = require("mongoose");
 const MatchSchema = new mongoose.Schema({
     match_id:{
         type: Number,
+<<<<<<< Updated upstream
         required: true,
+=======
+        required: false
+>>>>>>> Stashed changes
     },
     username:{
         type: String,
-        required: true
+        required: false
     },
     user_id:{
         type: Number,
-        required: true
+        required: false
     },
     mapName:{
         type: String,
-        required: true
+        required: false
     },
     agent:{
         type: String,
-        required: true
+        required: false
     },
     gun: {
         type: String,
-        required: true
+        required: false
     },
     createdAt:{
         type: Date,
