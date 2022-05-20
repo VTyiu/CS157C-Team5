@@ -21,10 +21,17 @@ const MatchForm = ({ closeMatchForm }) => {
     })
   };
 
-  // function setMapDd() {
-  //   var select = document.getElementById('mapdd');
-  //   setMapName(select.value);
-  // }
+  function setMapDd() {
+    var select = document.getElementById('mapdd');
+    console.log(select.value);
+    setMapName(select.value);
+  }
+
+  function setAgentDd() {
+    var select = document.getElementById('agentdd');
+    console.log(select.value);
+    setAgent(select.value);
+  }
 
   return (
     <div className="match-form-background">
@@ -59,9 +66,7 @@ const MatchForm = ({ closeMatchForm }) => {
           <div className="match-form-maps">
             <label for="mapdd">Maps</label>
             <select name="Maps" id="mapdd" 
-              onChange={(event) => {
-                setMapName(event.value);
-              }}>
+              onChange={setMapDd}>
               <option value="select">Select a Map</option>
               <option value="bind">Bind</option>
               <option value="ascent">Ascent</option>
@@ -74,7 +79,7 @@ const MatchForm = ({ closeMatchForm }) => {
           </div>
           <div className="match-form-agents">
             <label for="agentdd">Agents</label>
-            <select name="Agents" id="agentdd">
+            <select name="Agents" id="agentdd" onChange={setAgentDd}>
               <option value="select">Select an Agent</option>
               <option value="fade">Fade</option>
               <option value="neon">Neon</option>
@@ -94,9 +99,6 @@ const MatchForm = ({ closeMatchForm }) => {
               <option value="omen">Omen</option>
               <option value="reyna">Reyna</option>
               <option value="killjoy">Killjoy</option>
-              onChange={(event) => {
-                setAgent(event.options.value);
-              }}
             </select>
           </div>
         </div>
