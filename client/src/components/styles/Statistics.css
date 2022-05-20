@@ -1,0 +1,19 @@
+.stats-container {
+  background: linear-gradient(360deg, rgb(15, 13, 22) 0%, rgb(8, 6, 19) 100%);
+  width: 100%;
+  height: 891px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-title {
+  background: linear-gradient(360deg, rgb(15, 13, 22) 0%, rgb(8, 6, 19) 100%);
+  height: 10%;
+}
+
+.stats-title h1 {
+  position: relative;
+  color: white;
+  margin-top: 20px;
+  margin-left: 5%;
+}

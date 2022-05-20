@@ -1,0 +1,8 @@
+.homepage-container {
+  background-image: url("../../assets/homebackground.jpeg");
+  background-position: center;
+  background-size: cover;
+  height: 891px;
+  width: 100%;
+  position: relative;
+}

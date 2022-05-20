@@ -1,0 +1,104 @@
+.form-container {
+  width: 100%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  height: 890px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-content-left {
+  background-image: url("../../assets/jett2.jpeg");
+  background-size: 100% 100%;
+}
+
+.form-content-right {
+  position: relative;
+  background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+}
+
+.form {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form h1 {
+  font-size: 2rem;
+  text-align: center;
+  width: 80%;
+  margin-bottom: 1rem;
+  color: rgb(250, 87, 87);
+}
+
+.form-inputs {
+  margin-bottom: 0.5rem;
+  width: 80%;
+}
+
+.form-inputs p {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #ff5151;
+}
+
+.form-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.form-input {
+  display: block;
+  padding-left: 10px;
+  outline: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 100%;
+  border: none;
+}
+
+.form-input::placeholder {
+  color: #595959;
+  font-size: 12px;
+}
+
+.form-input-btn {
+  width: 80%;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: rgb(250, 87, 87);
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-input-btn:hover {
+  cursor: pointer;
+  background: rgb(58, 58, 58);
+  transition: all 0.4s ease-out;
+}
+
+.form-input-login {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  color: #fff;
+  width: 80%;
+  text-align: center;
+}
+
+.form-input-login a {
+  text-decoration: none;
+  color: rgb(250, 87, 87);
+  font-weight: 600;
+}
