@@ -25,18 +25,6 @@ const MatchSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    kills: {
-        type: Number,
-        required: false
-    },
-    deaths: {
-        type: Number,
-        required: false
-    },
-    comments:{
-        type: String,
-        required: false
-    },
     createdAt:{
         type: Date,
         default: Date.now
