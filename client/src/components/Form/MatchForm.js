@@ -7,7 +7,8 @@ const MatchForm = ({ closeMatchForm }) => {
 
   const [mapName, setMapName] = useState("");
   const [agent, setAgent] = useState("");
-  //const [gun, setGun] = useState("");
+  const [gun, setGun] = useState("");
+  const [comments, setComments] = useState("");
   const [kills, setKills] = useState(0);
   const [deaths, setDeaths] = useState(0);
 
@@ -15,9 +16,10 @@ const MatchForm = ({ closeMatchForm }) => {
     Axios.post("http://localhost:3001/createMatch", {
       mapName: mapName,
       agent: agent,
-      //gun: gun,
+      gun: gun,
       kills: kills,
-      deaths: deaths
+      deaths: deaths,
+      comments: comments
     })
   };
 
@@ -33,6 +35,12 @@ const MatchForm = ({ closeMatchForm }) => {
     setAgent(select.value);
   }
 
+  function setGunDd() {
+    var select = document.getElementById('gundd');
+    console.log(select.value);
+    setGun(select.value);
+  }
+
   return (
     <div className="match-form-background">
       <div className="match-form-container">
@@ -41,7 +49,7 @@ const MatchForm = ({ closeMatchForm }) => {
         </div>
         <div className="match-form-title">Match Information</div>
         <div className="match-form-body">
-          <div className="match-form-kills">
+          <div className="match-form-attr">
             <label className="match-form-label">Kills</label>
             <input
               type="number"
@@ -52,7 +60,7 @@ const MatchForm = ({ closeMatchForm }) => {
               }}
             />
           </div>
-          <div className="match-form-deaths">
+          <div className="match-form-attr">
             <label className="match-form-label">Deaths</label>
             <input
               type="number"
@@ -63,8 +71,8 @@ const MatchForm = ({ closeMatchForm }) => {
               }}
             />
           </div>
-          <div className="match-form-maps">
-            <label for="mapdd">Maps</label>
+          <div className="match-form-attr">
+            <label className="match-form-label">Maps</label>
             <select name="Maps" id="mapdd" 
               onChange={setMapDd}>
               <option value="select">Select a Map</option>
@@ -77,8 +85,8 @@ const MatchForm = ({ closeMatchForm }) => {
               <option value="icebox">Icebox</option>
             </select>
           </div>
-          <div className="match-form-agents">
-            <label for="agentdd">Agents</label>
+          <div className="match-form-attr">
+            <label className="match-form-label">Agents</label>
             <select name="Agents" id="agentdd" onChange={setAgentDd}>
               <option value="select">Select an Agent</option>
               <option value="fade">Fade</option>
@@ -100,6 +108,35 @@ const MatchForm = ({ closeMatchForm }) => {
               <option value="reyna">Reyna</option>
               <option value="killjoy">Killjoy</option>
             </select>
+          </div>
+          <div className="match-form-attr">
+            <label className="match-form-label">Guns</label>
+            <select name="Guns" id="gundd" onChange={setGunDd}>
+              <option value="select">Select a Gun</option>
+              <option value="phantom">phantom</option>
+              <option value="vandal">vandal</option>
+              <option value="stinger">stinger</option>
+              <option value="spectre">spectre</option>
+              <option value="bucky">bucky</option>
+              <option value="judge">judge</option>
+              <option value="bulldog">bulldog</option>
+              <option value="guardian">guardian</option>
+              <option value="marshal">marshal</option>
+              <option value="operator">operator</option>
+              <option value="ares">ares</option>
+              <option value="odin">odin</option>
+            </select>
+          </div>
+          <div className="match-form-attr">
+            <label className="match-form-label">Comments</label>
+            <input
+              type="text"
+              className="match-form-input-comment"
+              placeholder="Comments..."
+              onChange={(event) => {
+                setComments(event.target.value);
+              }}
+            />
           </div>
         </div>
         <div className="match-form-footer">

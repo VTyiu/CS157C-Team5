@@ -33,6 +33,10 @@ const MatchSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
+    comments:{
+        type: String,
+        required: false
+    },
     createdAt:{
         type: Date,
         default: Date.now

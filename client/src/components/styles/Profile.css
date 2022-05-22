@@ -3,11 +3,13 @@
   height: 891px;
   display: flex;
   background: linear-gradient(180deg, rgb(15, 13, 22) 0%, rgb(8, 6, 19) 100%);
+  
 }
 
 .profile-page-background {
   width: 35%;
   background: linear-gradient(180deg, rgb(15, 13, 22) 0%, rgb(8, 6, 19) 100%);
+  
 }
 
 .profile-page-container {
@@ -20,9 +22,9 @@
   background-color: whitesmoke;
 }
 
-.profile-page-container h1 {
+h1{
+  text-align: center;
   color: black;
-  margin-left: 33.33%;
 }
 
 .profile-matches-background {
@@ -38,9 +40,4 @@
   margin-top: 2.5%;
   border-radius: 10px;
   background-color: whitesmoke;
-}
-
-.profile-matches-container h1 {
-  color: black;
-  margin-left: 42%;
 }
