@@ -72,7 +72,7 @@ const MatchForm = ({ closeMatchForm }) => {
             />
           </div>
           <div className="match-form-attr">
-            <label className="match-form-label">Maps</label>
+            <label className="match-form-label">Map</label>
             <select name="Maps" id="mapdd" 
               onChange={setMapDd}>
               <option value="select">Select a Map</option>
@@ -86,7 +86,7 @@ const MatchForm = ({ closeMatchForm }) => {
             </select>
           </div>
           <div className="match-form-attr">
-            <label className="match-form-label">Agents</label>
+            <label className="match-form-label">Agent</label>
             <select name="Agents" id="agentdd" onChange={setAgentDd}>
               <option value="select">Select an Agent</option>
               <option value="fade">Fade</option>
@@ -110,7 +110,7 @@ const MatchForm = ({ closeMatchForm }) => {
             </select>
           </div>
           <div className="match-form-attr">
-            <label className="match-form-label">Guns</label>
+            <label className="match-form-label">Gun</label>
             <select name="Guns" id="gundd" onChange={setGunDd}>
               <option value="select">Select a Gun</option>
               <option value="phantom">phantom</option>
