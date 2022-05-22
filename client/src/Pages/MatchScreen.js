@@ -30,6 +30,14 @@ const MatchScreen = () => {
       _id: _id,
     });
   };
+  
+  const deleteMatch = (id) => {
+    Axios.delete(`http://localhost:3001/delete/${id}`).then(()=> {
+      setListOfMatches(listOfMatches.filter((val) => {
+        return val._id != id;
+      }))
+    });
+  };
 
   const createMatch = () => {
     Axios.post("http://localhost:3001/createMatch", {
@@ -39,10 +47,10 @@ const MatchScreen = () => {
       mapName: mapName,
       agent: agent,
       gun: gun,
-    }).then(() => {
+    }).then((response) => {
       setListOfMatches([
         ...listOfMatches,
-        { match_id, username, user_id, mapName, agent, gun },
+        { _id: response.data._id, match_id, username, user_id, mapName, agent, gun },
       ]);
     });
   };
@@ -97,7 +105,34 @@ const MatchScreen = () => {
         />
         <button onClick={createMatch}> Create Match </button>
       </div>
+      <div className="showMatches">
+        {listOfMatches.map((val) => {
+          return (
+            <div className="matchContainer">
+              <div className="match">
+                <h3>Match ID: {val.match_id}</h3>
+                <h3>Username: {val.username}</h3>
+                <h3>Map name: {val.mapName}</h3>
+                <h3>Agent: {val.agent}</h3>
+                <h3>Main gun used: {val.gun}</h3>
+                <h3>Comments: {val.comments}</h3>
+              </div>
+              <div className="matchButtons">
+
+                <button onClick={() => {
+                  updateMatch(val._id);
+                }}>Update</button>
+
+                <button onClick={() => {
+                  deleteMatch(val._id);
+                }}>Delete</button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
+    
   );
 };
 
