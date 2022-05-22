@@ -113,6 +113,33 @@ app.put("/update", async (req, res) => {
   res.send("updated");
 });
 
+// app.put("/updateMatch", async (req, res) => {
+//   // .put is used to update stuff
+//   const newKills = req.body.;
+//   const newDeaths = req.body.newMapName;
+//   const newMap = req.body.newMapName;
+//   const newAgent = req.body.newMapName;
+//   const newGun = req.body.newMapName;
+//   const newComments = req.body.newMapName;
+//   const _id = req.body._id;
+//   try {
+//     await MatchModel.findById(_id, (error, matchToUpdate) => {
+//       matchToUpdate.mapName = newMapName;
+//       matchToUpdate.save();
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+
+//   res.send("updated");
+// });
+
+app.delete("/deleteMatch/:id", async (req, res) => {
+  const id = req.params.id;
+  await MatchModel.findByIdAndRemove(id).exec();
+  res.send("itemdeleted");
+})
+
 app.listen(3001, () => {
   console.log("SERVER RUNS PERFECTLY!");
 });

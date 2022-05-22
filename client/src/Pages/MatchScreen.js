@@ -28,7 +28,7 @@ const MatchScreen = () => {
     Axios.put("http://localhost:3001/update", {
       newMapName: newMapName,
       _id: _id,
-    });
+    })
   };
   
   const deleteMatch = (id) => {
