@@ -22,6 +22,7 @@
 .match-form-title {
   display: inline-block;
   text-align: center;
+  font-size: 25px;
 }
 
 .match-form-close {
@@ -39,28 +40,39 @@
 .match-form-body {
   flex: 50%;
   display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
   justify-content: center;
   align-items: center;
   font-size: 1.7rem;
   text-align: center;
 }
 
-.match-form-inputs {
+/* .match-form-inputs {
   bottom: 100%;
   width: 80%;
+  
   margin-top: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .match-form-input {
   display: block;
   padding-left: 10px;
   outline: none;
   height: 40px;
-  width: 75%;
+  width: 100px;
+}
+
+.match-form-input-comment {
+  display: block;
+  padding-left: 10px;
+  outline: none;
+  height: 40px;
+  width: 100%;
 }
 
 .match-form-label {
@@ -88,4 +100,19 @@
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.match-form-attr{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40%;
+  align-items: center;
+}
+
+select{
+  display: block;
+  padding-left: 10px;
+  outline: none;
+  height: 40px;
+  width: 100%;
 }
