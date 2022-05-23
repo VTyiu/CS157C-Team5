@@ -6,12 +6,14 @@ import { matchToUpdate } from "../../Pages/testMatch.js";
 
 const UpdateMatchForm = ({ closeUpdateForm }) => {
 
-    const [mapName, setMapName] = useState("");
-    const [agent, setAgent] = useState("");
-    const [gun, setGun] = useState("");
-    const [comments, setComments] = useState("");
-    const [kills, setKills] = useState(0);
-    const [deaths, setDeaths] = useState(0);
+    const [mapName, setMapName] = useState(matchToUpdate.updateMapName);
+    const [agent, setAgent] = useState(matchToUpdate.updateAgent);
+    const [gun, setGun] = useState(matchToUpdate.updateGun);
+    const [comments, setComments] = useState(matchToUpdate.updateComments);
+    const [kills, setKills] = useState(matchToUpdate.updateKills);
+    const [deaths, setDeaths] = useState(matchToUpdate.updateDeaths);
+
+    
 
 
     //   const createMatch = () => {
@@ -55,7 +57,11 @@ const UpdateMatchForm = ({ closeUpdateForm }) => {
         setGun(select.value);
     }
 
+    
+
+
     return (
+        
         <div className="match-form-background">
             <div className="match-form-container">
                 <div className="match-form-close">
@@ -69,6 +75,7 @@ const UpdateMatchForm = ({ closeUpdateForm }) => {
                             type="number"
                             className="match-form-input"
                             placeholder="Number of kills..."
+                            id = "changeKills"
                             onChange={(event) => {
                                 setKills(event.target.value);
                             }}

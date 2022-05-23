@@ -8,7 +8,14 @@ import Axios from "axios";
 import _ from "lodash";
 
 const matchToUpdate = {
-    updateMatchID: 0
+    updateMatchID: 0,
+    updateAgent: "",
+    updateMapName: "",
+    updateKills: 0,
+    updateDeaths: 0,
+    updateGun: "",
+    updateComments: ""
+
 };
 
 const Profile = () => {
@@ -74,7 +81,13 @@ const Profile = () => {
                       className="openUpdateForm"
                       onClick={() => {
                         matchToUpdate.updateMatchID = val._id;
-                        console.log("update match id " + matchToUpdate.updateMatchID);
+                        matchToUpdate.updateAgent = val.agent;
+                        matchToUpdate.updateMapName = val.mapName;
+                        matchToUpdate.updateKills = val.kills;
+                        matchToUpdate.updateDeaths = val.deaths;
+                        matchToUpdate.updateGun = val.gun;
+                        matchToUpdate.updateComments = val.comments;
+                        console.log("update match properties " + matchToUpdate.updateMatchID);
                         setOpenUpdateForm(true);
                       }}>Update</button>
 
