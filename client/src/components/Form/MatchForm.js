@@ -3,7 +3,7 @@ import { useState } from "react";
 import Axios from "axios";
 import "../styles/Matchscreen.css";
 
-const MatchForm = ({ closeMatchForm }) => {
+const MatchForm = ({ closeMatchForm, userName, setListOfMatches, listOfMatches }) => {
 
   const [mapName, setMapName] = useState("");
   const [agent, setAgent] = useState("");
@@ -19,9 +19,17 @@ const MatchForm = ({ closeMatchForm }) => {
       gun: gun,
       kills: kills,
       deaths: deaths,
-      comments: comments
-    })
+      comments: comments,
+      username: userName,
+    }).then(() => {
+      closeMatchForm(false);
+      setListOfMatches([
+        ...listOfMatches,
+        { mapName, agent, gun, agent, kills, deaths, comments },
+      ]);
+    });
   };
+  
 
   function setMapDd() {
     var select = document.getElementById('mapdd');

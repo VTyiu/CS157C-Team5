@@ -15,10 +15,11 @@ const matchToUpdate = {
     updateDeaths: 0,
     updateGun: "",
     updateComments: ""
-
 };
 
-const Profile = () => {
+const Profile = ({
+  userName
+}) => {
   const [openMatchForm, setOpenMatchForm] = useState(false);
   const [openUpdateForm, setOpenUpdateForm] = useState(false);
   const [listOfMatches, setListOfMatches] = useState([]);
@@ -26,7 +27,7 @@ const Profile = () => {
   useEffect(() => {
     Axios.get("http://localhost:3001/getMatches")
       .then((response) => {
-        // const currUserMatches = _.filter(response.data, { 'user_id': 0 });
+        // const currUserMatches = _.filter(response.data, {username: userName});
         // console.log("current user matches", currUserMatches);
         // setListOfMatches(currUserMatches);
         setListOfMatches(response.data);
@@ -63,16 +64,17 @@ const Profile = () => {
         <div className="profile-matches-background">
           <div className="profile-matches-container">
             <h1> Recent Matches </h1>
+            <div className="matches-container">
             {listOfMatches.map((val) => {
               return (
                 <div className="match_container">
                   <div className="match_info">
-                    <h3>Agent: {val.agent}</h3>
-                    <h3>Map name: {val.mapName}</h3>
-                    <h3>Number of kills: {val.kills}</h3>
-                    <h3>Number of deaths: {val.deaths}</h3>
-                    <h3>Main gun used: {val.gun}</h3>
-                    <h3>Comments: {val.comments}</h3>
+                    <h4>Agent: </h4><p>{val.agent}<br></br></p>
+                    <h4>Map name: </h4><p>{val.mapName}<br></br></p>
+                    <h4>Number of kills: </h4><p>{val.kills}<br></br></p>
+                    <h4>Number of deaths: </h4><p>{val.deaths}<br></br></p>
+                    <h4>Main gun used: </h4><p>{val.gun}<br></br></p>
+                    <h4>Comments: </h4><p>{val.comments}<br></br></p>
                   </div>
 
                   <div className="match_button">
@@ -91,7 +93,7 @@ const Profile = () => {
                         setOpenUpdateForm(true);
                       }}>Update</button>
 
-                    <button onClick={() => {
+                    <button className="deleteBtn" onClick={() => {
                       deleteMatch(val._id);
                     }}>Delete</button>
 
@@ -104,9 +106,10 @@ const Profile = () => {
             
 
           </div> */}
+          </div>
         </div>
-        {openMatchForm && <MatchForm closeMatchForm={setOpenMatchForm} />}
-        {openUpdateForm && <UpdateMatchForm closeUpdateForm={setOpenUpdateForm} />}
+        {openMatchForm && (<MatchForm userName={userName} closeMatchForm={setOpenMatchForm} setListOfMatches={setListOfMatches} listOfMatches={listOfMatches}/>)}
+        {openUpdateForm && <UpdateMatchForm userName={userName} closeUpdateForm={setOpenUpdateForm} setListOfMatches={setListOfMatches} listOfMatches={listOfMatches}/>}
       </div>
     </div>
   );

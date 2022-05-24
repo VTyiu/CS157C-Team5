@@ -4,7 +4,7 @@ import Axios from "axios";
 import "../styles/Matchscreen.css";
 import { matchToUpdate } from "../../Pages/testMatch.js";
 
-const UpdateMatchForm = ({ closeUpdateForm }) => {
+const UpdateMatchForm = ({ closeUpdateForm, userName, setListOfMatches, listOfMatches}) => {
 
     const [mapName, setMapName] = useState(matchToUpdate.updateMapName);
     const [agent, setAgent] = useState(matchToUpdate.updateAgent);
@@ -36,7 +36,22 @@ const UpdateMatchForm = ({ closeUpdateForm }) => {
             deaths: deaths,
             comments: comments,
             _id: _id,
-        });
+            username: userName
+        }).then(() => {
+            setListOfMatches(
+                listOfMatches.map((val) => {
+                    return val._id == _id ? {
+                        _id: _id,
+                        mapName: mapName,
+                        agent: agent,
+                        gun: gun,
+                        kills: kills,
+                        deaths: deaths,
+                        comments: comments,
+                        username: userName
+                    } : val;
+                }))
+        })
     };
 
     function setMapDd() {
@@ -55,6 +70,11 @@ const UpdateMatchForm = ({ closeUpdateForm }) => {
         var select = document.getElementById('gundd');
         console.log(select.value);
         setGun(select.value);
+    }
+
+    function submitHandler(){
+        updateMatch(matchToUpdate.updateMatchID);
+        closeUpdateForm(false);
     }
 
     
@@ -162,7 +182,7 @@ const UpdateMatchForm = ({ closeUpdateForm }) => {
                 </div>
                 <div className="match-form-footer">
                     <button onClick={() => closeUpdateForm(false)}>Cancel</button>
-                    <button onClick={updateMatch(matchToUpdate.updateMatchID)}> Submit </button>
+                    <button onClick={submitHandler}> Submit </button>
                 </div>
             </div>
         </div>

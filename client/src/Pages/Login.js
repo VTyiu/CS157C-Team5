@@ -27,7 +27,6 @@ const Login = ({ isAuth, setAuth, logUser }) => {
 
   return (
     <div className="login-container">
-      {isAuth ? <div>Auth</div> : <div>Not Auth</div>}
       <form className="login-container-form">
         <h1>Login</h1>
         <span className="login-separator">

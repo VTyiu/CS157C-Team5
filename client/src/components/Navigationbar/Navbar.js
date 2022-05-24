@@ -12,8 +12,8 @@ const Navbar = ({ isAuth, setAuth }) => {
       <div className="nav-menu">
         <Link to="/">Home</Link>
         <Link to="/maps">Maps</Link>
-        <Link to="/statistics">Statistics</Link>
-        {isAuth && <Link to="/profile">Profile</Link>}
+        {/* {isAuth && <Link to="/profile">Profile</Link>} */}
+        {isAuth && <Link to="/testmatch">Profile</Link>}
         {!isAuth && <Link to="/form">Signup</Link>}
         {!isAuth && <Link to="/login">Login</Link>}
         {isAuth && (

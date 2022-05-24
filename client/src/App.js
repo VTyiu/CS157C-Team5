@@ -15,7 +15,8 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const [isAuth, setAuth] = useState(false);
-
+  const [userId, setUserId] = useState();
+  const [userName, setUserName] = useState("");
   // useEffect(() => {}, [isAuth]);
 
   let logUser = async (email, password, setAuth) => {
@@ -27,6 +28,8 @@ const App = () => {
 
       if (res.data.status === 100) {
         console.log("auth");
+        setUserId(res.data.user_id);
+        setUserName(res.data.username);
         setAuth(true);
         return true;
       } else {
@@ -43,7 +46,7 @@ const App = () => {
     <Router>
       <Navbar isAuth={isAuth} setAuth={setAuth} />
       <Routes>
-        <Route path="/" element={<Home isAuth={isAuth} setAuth={setAuth} />} />
+        <Route path="/" element={<Home isAuth={isAuth} setAuth={setAuth} userId={userId} userName={userName}/>} />
         <Route path="/form" element={<Form />} />
         <Route path="/maps" element={<Maps />} />
         <Route
@@ -55,10 +58,10 @@ const App = () => {
         <Route path="/statistics" element={<Statistics />} />
         <Route
           path="/profile"
-          element={<Profile isAuth={isAuth} setAuth={setAuth} />}
+          element={<Profile isAuth={isAuth} setAuth={setAuth} userId={userId} userName={userName}/>}
         />
         <Route path="/matchscreen" element={<MatchScreen />} />
-        <Route path="/testmatch" element={<TestMatch />} />
+        <Route path="/testmatch" element={<TestMatch isAuth={isAuth} setAuth={setAuth} userId={userId} userName={userName}/>} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

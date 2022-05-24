@@ -24,8 +24,8 @@ mongoose.connect(
 // });
 
 // req: request - get info from front end, res: response - send info from front end to back end
-app.post("/loginUser", async (req, res) => {
-  const user = await UserModel.findOne(
+app.post("/loginUser", (req, res) => {
+  const user = UserModel.findOne(
     {
       email: req.body.email,
       password: req.body.password,
@@ -36,7 +36,7 @@ app.post("/loginUser", async (req, res) => {
         res.json({ status: 404 }); // Error no matching user;
       } else {
         console.log("pass");
-        res.json({ status: 100 }); // Successful login
+        res.json({ status: 100, user_id: results._id, username: results.name });
       }
     }
   );
@@ -114,7 +114,7 @@ app.put("/update", async (req, res) => {
   res.send("updated");
 });
 
-app.put("/updateMatch", async (req, res) => {
+app.put("/updateMatch", (req, res) => {
   // .put is used to update stuff
   const newKills = req.body.kills;
   const newDeaths = req.body.deaths;
@@ -124,7 +124,7 @@ app.put("/updateMatch", async (req, res) => {
   const newComments = req.body.comments;
   const _id = req.body._id;
   try {
-    await MatchModel.findById(_id, (error, matchToUpdate) => {
+      MatchModel.findById(_id, (error, matchToUpdate) => {
       matchToUpdate.kills = newKills;
       matchToUpdate.deaths = newDeaths;
       matchToUpdate.mapName = newMap;
