@@ -26,7 +26,7 @@ const Profile = () => {
   useEffect(() => {
     Axios.get("http://localhost:3001/getMatches")
       .then((response) => {
-        // const currUserMatches = _.filter(response.data, { 'user_id': 0 });
+        // const currUserMatches = _.filter(response.data, {'user_id': 0});
         // console.log("current user matches", currUserMatches);
         // setListOfMatches(currUserMatches);
         setListOfMatches(response.data);

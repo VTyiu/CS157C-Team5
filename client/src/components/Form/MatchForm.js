@@ -20,6 +20,8 @@ const MatchForm = ({ closeMatchForm }) => {
       kills: kills,
       deaths: deaths,
       comments: comments
+    }).then(()=>{
+      alert("Match added successfully!");
     })
   };
 
