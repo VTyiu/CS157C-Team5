@@ -24,8 +24,8 @@ const MatchForm = ({ closeMatchForm, userName, setListOfMatches, listOfMatches }
     }).then((response) => {
       closeMatchForm(false);
       setListOfMatches([
-        ...listOfMatches,
-        { _id: response.data._id, mapName, agent, gun, agent, kills, deaths, comments },
+        
+        { _id: response.data._id, mapName, agent, gun, agent, kills, deaths, comments }, ...listOfMatches,
       ]);
     });
   };
