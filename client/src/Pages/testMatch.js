@@ -27,10 +27,10 @@ const Profile = ({
   useEffect(() => {
     Axios.get("http://localhost:3001/getMatches")
       .then((response) => {
-        // const currUserMatches = _.filter(response.data, {username: userName});
-        // console.log("current user matches", currUserMatches);
-        // setListOfMatches(currUserMatches);
-        setListOfMatches(response.data);
+        const currUserMatches = _.filter(response.data, {username: userName});
+        console.log("current user matches", currUserMatches);
+        setListOfMatches(currUserMatches);
+        // setListOfMatches(response.data);
       })
       .catch(() => {
         console.log("ERR");

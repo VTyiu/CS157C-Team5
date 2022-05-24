@@ -94,7 +94,8 @@ app.post("/createMatch", async (req, res) => {
   const match = req.body;
   const newMatch = new MatchModel(match);
   await newMatch.save();
-  res.json(match);
+  res.send(newMatch);
+  // res.json(match);
 });
 
 app.put("/update", async (req, res) => {

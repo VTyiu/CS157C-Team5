@@ -21,11 +21,11 @@ const MatchForm = ({ closeMatchForm, userName, setListOfMatches, listOfMatches }
       deaths: deaths,
       comments: comments,
       username: userName,
-    }).then(() => {
+    }).then((response) => {
       closeMatchForm(false);
       setListOfMatches([
         ...listOfMatches,
-        { mapName, agent, gun, agent, kills, deaths, comments },
+        { _id: response.data._id, mapName, agent, gun, agent, kills, deaths, comments },
       ]);
     });
   };
