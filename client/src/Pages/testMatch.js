@@ -50,7 +50,7 @@ const Profile = ({
       <div className="profile-container">
         <div className="profile-page-background">
           <div className="profile-page-container">
-            <h1>Profile Page</h1>
+            <h1>{userName}'s Profile Page:</h1>
             <button
               className="openMatchForm"
               onClick={() => {
